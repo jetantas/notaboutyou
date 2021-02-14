@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../../dhtesting"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../seleniumtest"
+		}
+	],
+	"settings": {}
+}
