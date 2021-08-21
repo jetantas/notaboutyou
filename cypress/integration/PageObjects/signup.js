@@ -16,7 +16,7 @@ class signup{
     } 
     
     clickJoinNow(){
-        return cy.xpath('//span[normalize-space()="Jetzt registrieren"]').click({force: true})
+        return cy.get('[data-testid=RegisterSubmitButton]').click({force: true})
     } 
     
 }

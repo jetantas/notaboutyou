@@ -1,41 +1,53 @@
 /* **********************************************
-  Login Feature - Steps Definitions 
+  Signup Feature - Steps Definitions 
   Test Scenarios Implementation by Jorge Tantas
 *************************************************/
 
-import Login from '../PageObjects/login'
 import Home from '../PageObjects/home'
-const login = new Login()
+import Login from '../PageObjects/login';
+import Signup from '../PageObjects/signup'
+
 const home = new Home()
+const login = new Login()
+const signup = new Signup()
 
 /* *******************************************
-  Scenario: User is Signed In
+  Scenario: User is Signed Up
 ******************************************* */
-Given('I navigate to the home page',() => {
-    home.visitHome()    
+
+Given('I navigate to the home page', () => {
+   home.visitHome() 
 })
-And('I navigate to the login page', () => {
-    home.clickLoginIcon()
+And('I go to sign up page', () => {
+   home.clickLoginIcon()
 });
-When('I enter', (datatable) => {
-  datatable.hashes().forEach(element => {
-    login.myEmail().type(element.email)
-    login.myPassword().type(element.password)
-  })   
+
+When('I click on create new account', () => {
+   //home.clickCreateAccount() 
+   login.clickMenuRegister()  
 })
-And('I click on register button', () => {
-   login.clickRegister()
-});
-Then('I should be logged in', () => {
-   home.validateMyHeader("George")
+
+And('I enter', (datatable) => {
+   datatable.hashes().forEach(element => {
+     signup.myFirstName().type(element.firstname)
+     signup.myLastName().type(element.lastname)
+     signup.myEmail().type(element.email)
+     signup.myPassword().type(element.password)
+   })   
+ })
+And('I click on Join Now button', () => {
+    signup.clickJoinNow()
+ });
+Then('I should be Signed Up', () => {
+    home.validateMyHeader('Firstest')
 });
 
 /* *******************************************
   Scenario: User is Signed Out
 ******************************************* */
 When('I click on logout button', () => {
-  home.clickLogout()
-});
-Then('I should be logged out', () => {
-  home.validateMyHeader('YOU')
-});
+   home.clickLogout()
+ });
+ Then('I should be logged out', () => {
+   home.validateMyHeader('YOU')
+ });
