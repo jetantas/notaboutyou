@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "clean:reports": "rm -R -f cypress/reports && mkdir cypress/reports && mkdir cypress/reports/mochareports",
-    "pretest": "npm run clean:reports", 
+    "pretest": "npm run clean:reports",
     "scripts": "cypress run",
-    "test" : "npm run scripts" 
+    "test": "npm run scripts"
   },
   "keywords": [],
   "author": "",
