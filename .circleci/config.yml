@@ -1,16 +1,13 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine. See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
+# Use a package of configuration called an orb.
 orbs:
-  cypress: cypress-io/cypress@1
+  # Declare a dependency on the welcome-orb
+  welcome: circleci/welcome-orb@0.4.1
+# Orchestrate or schedule a set of jobs
 workflows:
-  build:
+  # Name the workflow "welcome"
+  welcome:
+    # Run the welcome/run job in its own container
     jobs:
-      - cypress/install:
-          build: 'npm run build' # run a custom app build step
-      - cypress/run:
-          requires:
-            - cypress/install
-          record: true # record results on Cypress Dashboard
-          parallel: true # split all specs across machines
-          parallelism: 4 # use 4 CircleCI machines to finish quickly
-          group: 'all tests' # name this group "all tests" on the dashboard
-          start: 'npm start' # start server before running tests
+      - welcome/run
