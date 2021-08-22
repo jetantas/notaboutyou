@@ -15,7 +15,9 @@ class home{
     }
 
     validateMyHeader(txtUsername){
-        return cy.xpath('//span[@data-test-id="UserName"]').should('have.text',txtUsername) 
+        const myHeader = cy.xpath('//span[@data-test-id="UserName"]', { timeout: 30000 })
+        myHeader.should('be.visible')
+        myHeader.should('have.text',txtUsername)
     }
 }
 export default home
