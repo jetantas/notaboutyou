@@ -1,7 +1,7 @@
 class home{
      
     visitHome(){
-        cy.visit('https://aboutyou.de',{ timeout: 30000 })
+        cy.visit('https://en.aboutyou.de/',{ timeout: 30000 })
         cy.get('#onetrust-accept-btn-handler').click()
     }
    
@@ -10,12 +10,12 @@ class home{
     }
     
     clickLogout(){
-        const itemLogout = cy.xpath('//button[normalize-space()="Abmelden"]')
+        const itemLogout = cy.xpath('//button[normalize-space()="Log out"]')
         itemLogout.click({force: true})
     }
 
     validateMyHeader(txtUsername){
-        return cy.get('.t6bp6s-9 > .t6bp6s-3').should('have.text',txtUsername) 
+        return cy.xpath('//span[@data-test-id="UserName"]').should('have.text',txtUsername) 
     }
 }
 export default home
