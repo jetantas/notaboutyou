@@ -8,5 +8,10 @@ orbs:
 workflows:
   build:
     jobs:
+     - cypress/install:
+          build: 'npm run build' # run a custom app build step
       - cypress/run: # "run" job comes from "cypress" orb
+          requires:
+            - cypress/install
           yarn: true
+          start: 'npm start' # start server before running tests
